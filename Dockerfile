@@ -1,14 +1,20 @@
-FROM python:3.10-slim as builder
+FROM node:16-alpine AS builder
 
 WORKDIR /app
 
-COPY . /app
+COPY package*.json ./
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN npm install --only=production
 
-FROM python:3.10-slim
+COPY . .
+
+FROM node:16-alpine
 
 WORKDIR /app
-COPY --from=builder /app /app
 
-CMD ["python", "app.py"]
+COPY --from=builder /app .
+
+EXPOSE 3000
+
+CMD ["node", "index.js"]
+
