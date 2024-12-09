@@ -1,1 +1,1 @@
-Small project for DevOps Process
+Small Node.js application.
