@@ -3,7 +3,7 @@ const http = require('http');
 const server = http.createServer((req, res) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello Titus, future Devops Engineer!\n');
+    res.end('Hello Titus, future DevOps Engineer!\n');
 });
 
 const PORT = 3000;
