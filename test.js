@@ -11,7 +11,7 @@ const options = {
 const req = http.request(options, (res) => {
   assert.strictEqual(res.statusCode, 200, 'Status code should be 200');
   res.on('data', (chunk) => {
-    assert.strictEqual(chunk.toString(), 'Hello Titus, futere DevOps Engineer!\n', 'Response should be "Hello DevOps!"');
+    assert.strictEqual(chunk.toString(), 'Hello Titus, future DevOps Engineer!\n', 'Response should be "Hello Titus, future DevOps Engineer!"');
   });
 });
 
