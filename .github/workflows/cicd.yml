@@ -1,0 +1,47 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Set up Docker BuildKit
+      - name: Set up Docker BuildKit
+        run: |
+          echo '{"features": {"buildkit": true}}' | sudo tee /etc/docker/daemon.json
+          sudo systemctl restart docker
+
+      # 3. Build the Docker image
+      - name: Build Docker image
+        run: |
+          DOCKER_BUILDKIT=1 docker build -t ${{ github.repository }}:$GITHUB_SHA .
+
+      # 4. Run Docker container
+      - name: Run Docker container
+        run: |
+          docker run -d -p 3000:3000 --name app_test ${{ github.repository }}:$GITHUB_SHA
+
+      # 5. Verify if the app responds
+      - name: Test if the app responds
+        run: |
+          sleep 5
+          node test.js
+
+      # 6. Clean up docker containerX
+      - name: Cleanup
+        run: |
+          docker stop app_test
+          docker rm app_test
+
