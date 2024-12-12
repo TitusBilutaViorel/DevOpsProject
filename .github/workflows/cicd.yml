@@ -26,12 +26,12 @@ jobs:
       # 3. Build the Docker image
       - name: Build Docker image
         run: |
-          DOCKER_BUILDKIT=1 docker build -t ${{ github.repository }}:$GITHUB_SHA .
+          DOCKER_BUILDKIT=1 docker build -t titusbilutaviorel/dockernodeapp:$GITHUB_SHA .
 
       # 4. Run Docker container
       - name: Run Docker container
         run: |
-          docker run -d -p 3000:3000 --name app_test ${{ github.repository }}:$GITHUB_SHA
+          docker run -d -p 3000:3000 --name app_test titusbilutaviorel/dockernodeapp:$GITHUB_SHA
 
       # 5. Verify if the app responds
       - name: Test if the app responds
