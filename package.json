@@ -8,13 +8,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TitusBilutaViorel/DevOpsProject.git"
+    "url": "git+https://github.com/TitusBilutaViorel/DockerNodeApp.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TitusBilutaViorel/DevOpsProject/issues"
+    "url": "https://github.com/TitusBilutaViorel/DockerNodeApp/issues"
   },
-  "homepage": "https://github.com/TitusBilutaViorel/DevOpsProject#readme"
+  "homepage": "https://github.com/TitusBilutaViorel/DockerNodeApp#readme"
 }
